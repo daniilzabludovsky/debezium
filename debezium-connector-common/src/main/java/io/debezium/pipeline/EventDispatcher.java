@@ -311,7 +311,7 @@ public class EventDispatcher<P extends Partition, T extends DataCollectionId> im
                                 + "context {}", maybeRedactSensitiveData(value), operation, maybeRedactSensitiveData(key), offset);
 
                         if (isASignalEventToProcess(dataCollectionId, operation) && sourceSignalChannel != null) {
-                            sourceSignalChannel.process(value);
+                            sourceSignalChannel.process(key, value);
 
                             if (signalProcessor != null) {
                                 // This is a synchronization point to immediately execute an eventual stop signal, just before emitting the CDC event
